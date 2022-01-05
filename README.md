@@ -3,16 +3,15 @@ test the chrome mermaid plugin
 
 ```mermaid
 flowchart LR
-  RokuUI["Roku Device"]-- transaction --> troute["transaction route"]
-  Roku-- push notification --> proute["transaction route"]
-  troute -- transaction id -->handlerIn["accept"]
+  RokuUI["A"]-- transaction --> troute["route"]
+  B-- push notification --> proute["route"]
+  troute -- id -->handlerIn["accept"]
   proute -- notification -->handlerIn
-  subgraph ActionHandler
+  subgraph Handler
     handlerIn -- json --> idb[(Database)]
     handlerIn -- action --> process[process]
     process -- refine --> handlerIn
-    process -- entitlement --> user-entitlement
-    process -- email --> Rabbit
-    process -- event --> BDE
+    process -- email --> user
+    process -- event --> store
   end
 ```
